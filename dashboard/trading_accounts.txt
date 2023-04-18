@@ -1,0 +1,17 @@
+
+Server: Deriv-Demo
+Login: 22014542
+Investor Password: duzftxd8
+Platform: MT5
+
+
+Server: ICMarketsEU-Demo
+Login: 51135132
+Investor Password: yym2fmut
+Platform: MT5
+
+
+Server: ICMarketsEU-Demo
+Login: 51135134
+Investor Password: u5qoleim
+Platform: MT5

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Trading{% endblock %}
+
+
+{% comment %} 
+{% include 'nav.html'%}
+<div class="container"> {% endcomment %}
+    {% block content %}
+    <h1>Trading Account Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Account Name</th>
+                <th>Equity</th>
+                <th>Balance</th>
+                <th>Market Watch Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+            <tr>
+                <td>{{ account.name }}</td>
+                <td>{{ account.equity }}</td>
+                <td>{{ account.balance }}</td>
+                <td>{{ account.market_watch_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    {% comment %} </div> {% endcomment %}
+    {% endblock %}
+
+
+

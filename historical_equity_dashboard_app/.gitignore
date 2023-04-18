@@ -1,0 +1,31 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Secret key
+secret_key.txt
+
+# Development settings
+local_settings.py
+
+# Database
+db.sqlite3
+
+# IDE files (optional)
+.vscode/
+.idea/
+
+# Ignore migrations if using version control on the app directory
+**/migrations/
+
+# Ignore .env file
+.env

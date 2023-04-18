@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% for trading_account_id, trading_account_data in trading_account_data.items %}
+      <div class="col-md-4">
+        <canvas id="chart-{{ trading_account_id }}"></canvas>
+        
+      </div>
+    {% endfor %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    {% for trading_account_id, trading_account_data in trading_account_data.items %}
+      var chartData{{ trading_account_id }} = {
+        labels: [{% for data in trading_account_data %}"{{ data.timestamp }}",{% endfor %}],
+        datasets: [{
+          label: 'Equity',
+          backgroundColor:'red',
+          borderColor: 'blue',
+          data: [{% for data in trading_account_data %}{{ data.equity }},{% endfor %}],
+          fill: false
+        }, {
+          label: 'Balance',
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'green',
+          data: [{% for data in trading_account_data %}{{ data.balance }},{% endfor %}],
+          fill: false
+        }]
+      };
+
+      var ctx{{ trading_account_id }} = document.getElementById('chart-{{ trading_account_id }}').getContext('2d');
+      var chart{{ trading_account_id }} = new Chart(ctx{{ trading_account_id }}, {
+        type: 'bar',
+        data: chartData{{ trading_account_id }},
+        options: {
+          responsive: true,
+          scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                unit: 'hour',
+                displayFormats: {
+                  hour: 'MMM D, hA'
+                }
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    {% endfor %}
+  </script>
+{% endblock %}
